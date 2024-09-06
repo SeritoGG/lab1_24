@@ -3,8 +3,9 @@ using namespace std;
 
 void draw(int size)
 {
-    int sizeFuel = size * 1.4;
+    int FuelTank_size = size * 1.4;
 
+    // Это голова ракеты //
     cout << "    _/\\_     " << endl;
     cout << "   /    \\    " << endl;
     cout << "  |_|__|_|   " << endl;
@@ -13,6 +14,7 @@ void draw(int size)
     cout << "   /    \\    " << endl;
     cout << "  |------|   " << endl;
 
+    // Это корпус ракеты //
     for (int i = 0; i < size; i++)
     {
         cout << "  |-    -| " << endl;
@@ -22,39 +24,46 @@ void draw(int size)
             cout << "  |_|__|_| " << endl;
             cout << "  |/    \\|" << endl;
         }
+        if (i == 2) cout << "  |-СССР-|" << endl;
     }
 
+    // Это реактивные двигатели ракеты //
     cout << "  /__/\\__\\  " << endl;
     cout << " /__/__\\__\\ " << endl;
     cout << "/__|    |__\\" << endl;
 
-
-    for (int i = 0; i < sizeFuel; i++) cout << "|  | -- |  |" << endl;
+    for (int i = 0; i < FuelTank_size; i++) cout << "|  | -- |  |" << endl;
     cout << "\\_/ \\__/ \\_/" << endl;
+}
+
+// Это проверка размера ракеты //
+bool size_checker(int &size)
+{
+    if (size < 3) return false;
+    return true;
 }
 
 int main()
 {
-    int rocket_size = 5;
-    bool sizeChecker = false;
+    int rocket_size;
     char guess;
 
     do
     {
         cout << "____ROCKET BUILDING____" << endl;
-        cout << "Enter rocket size, minimum size 5: "; cin >> rocket_size;
+        cout << "Enter rocket size (minimum size 3): "; cin >> rocket_size;
 
-        if (rocket_size > 5)
+        if (size_checker(rocket_size))
         {
             draw(rocket_size);
-            sizeChecker = true;
             break;
-        }else{
-            cout << "Slishkom malenkaya raketa. Wanna try again? (y/n):\n";cin >> guess;
-            sizeChecker = false;
+        }
+        else 
+        {
+            cout << "The rocket is too small. Wanna try again? (y/n):\n";cin >> guess;
         }
 
-    }while(!sizeChecker && guess != 'n');
+    }while(size_checker && tolower(guess) != 'n');
 
     return 0;
 }
