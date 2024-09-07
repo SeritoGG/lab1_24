@@ -56,7 +56,7 @@ bool answer_checker(char ch)
             default:
                 cout << "Wrong answer!" << endl;
                 return false;
-                continue;
+                break;
         }
     }
 }
