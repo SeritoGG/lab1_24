@@ -30,7 +30,7 @@ int main()
             cout << "The rocket is too small. Wanna try again? (y/n):\n";cin >> answer;
         }
 
-    }while(size_checker && answer_checker(answer));
+    }while(size_checker(rocket_size) && answer_checker(answer));
 
     return 0;
 }
