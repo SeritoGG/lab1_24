@@ -78,12 +78,14 @@ void draw(int size)
     for (int i = 0; i < size; i++)
     {
         cout << "  |-    -| " << endl;
+        
         if (i % 3 == 0)
         {
             cout << "  |\\____/| " << endl;
             cout << "  |_|__|_| " << endl;
             cout << "  |/    \\|" << endl;
         }
+        
         if (i == 2) cout << "  |-СССР-|" << endl;
     }
 
